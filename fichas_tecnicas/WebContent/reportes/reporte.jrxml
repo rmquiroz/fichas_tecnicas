@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="730a537f-db9a-42fc-a560-b61c4abb6b8a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Codigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Lenovo\\Documents\\Workspace\\fichas_tecnicas\\WebContent\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMG_DIR" class="java.lang.String"/>
+	<parameter name="SI" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from
+
+	(
+	select * from
+	-- SELECCIONAR CODIGOS 3
+	(select $P{Codigo}::INT as codigo, categoria, subcategoria, marca, description, replace(upc,'U','') as upc,
+	anchoproducto as anchoproducto, profundoproducto as profundoproducto, altoproducto as altoproducto, pesonetoproducto as pesonetoproducto,
+	pesobrutoproducto as pesobrutoproducto, volumentoducto as volumentoducto
+	from m_product
+	where value like to_Char (CASE WHEN $P{Codigo}::NUMERIC > 3000000 AND $P{Codigo}::NUMERIC < 4000000 then $P{Codigo}
+	WHEN $P{Codigo}::NUMERIC < 5000000 AND $P{Codigo}::NUMERIC > 3999999 THEN $P{Codigo}::NUMERIC - 1000000
+	WHEN $P{Codigo}::NUMERIC > 4999999 THEN $P{Codigo}::NUMERIC - 2000000 END) ) as cod3
+) as cod3,
+
+	(select * from
+	-- SELECCIONAR CODIGOS 5
+	(select $P{Codigo}::text as codigo, cajas_pallet::int, piezas_pallet::int, anchoproducto as anchopallet, profundoproducto as profundopallet, altoproducto as altopallet, pesonetoproducto as pesonetopallet,
+	pesobrutoproducto as pesobrutopallet, round((volumentoducto)::numeric,2) as volumenpallet, cajasporcama, camasporpallet
+	from m_product
+	where value like to_Char (CASE WHEN $P{Codigo}::NUMERIC > 5000000 then $P{Codigo}
+	WHEN $P{Codigo}::NUMERIC < 5000000 AND $P{Codigo}::NUMERIC>3999999 THEN $P{Codigo}::NUMERIC+1000000
+	WHEN $P{Codigo}::NUMERIC<3999999 THEN $P{Codigo}::NUMERIC + 2000000 END) ) as cod5
+) as cod5,
+	(select * from
+	-- SELECCIONAR CODIGOS 4
+	(select $P{Codigo}::text as codigo, anchoproducto as anchocorrugado,dun_14_ean, profundoproducto as profundocorrugado, piezas_caja::int,
+	altoproducto as altocorrugado, pesonetoproducto as pesonetocorrugado,
+	pesobrutoproducto as pesobrutocorrugado, round((volumentoducto)::numeric,2) as volumencorrugado
+	from m_product
+	where value like to_Char (CASE WHEN $P{Codigo}::NUMERIC > 4000000 AND $P{Codigo}::NUMERIC < 5000000 then $P{Codigo}
+	WHEN $P{Codigo}::NUMERIC < 4000000 AND $P{Codigo}::NUMERIC > 3000000 THEN $P{Codigo}::NUMERIC + 1000000
+	WHEN $P{Codigo}::NUMERIC > 4999999 THEN $P{Codigo}::NUMERIC - 1000000 END) ) as cod4
+
+) as cod4
+
+WHERE cod3.codigo = cod5.codigo
+and cod3.codigo = cod4.codigo]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Integer"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="subcategoria" class="java.lang.String"/>
+	<field name="marca" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="upc" class="java.lang.String">
+		<fieldDescription><![CDATA[--OBTG:NVARCHAR--]]></fieldDescription>
+	</field>
+	<field name="anchoproducto" class="java.lang.String"/>
+	<field name="profundoproducto" class="java.lang.String"/>
+	<field name="altoproducto" class="java.lang.String"/>
+	<field name="pesonetoproducto" class="java.lang.String"/>
+	<field name="pesobrutoproducto" class="java.lang.String"/>
+	<field name="volumentoducto" class="java.lang.String"/>
+	<field name="cajas_pallet" class="java.lang.Integer"/>
+	<field name="piezas_pallet" class="java.lang.Integer"/>
+	<field name="anchopallet" class="java.lang.String"/>
+	<field name="profundopallet" class="java.lang.String"/>
+	<field name="altopallet" class="java.lang.String"/>
+	<field name="pesonetopallet" class="java.lang.String"/>
+	<field name="pesobrutopallet" class="java.lang.String"/>
+	<field name="volumenpallet" class="java.math.BigDecimal"/>
+	<field name="cajasporcama" class="java.lang.String"/>
+	<field name="camasporpallet" class="java.lang.String"/>
+	<field name="anchocorrugado" class="java.lang.String"/>
+	<field name="dun_14_ean" class="java.lang.String"/>
+	<field name="profundocorrugado" class="java.lang.String"/>
+	<field name="piezas_caja" class="java.lang.Integer">
+		<fieldDescription><![CDATA[PIEZAS POR CAJA]]></fieldDescription>
+	</field>
+	<field name="altocorrugado" class="java.lang.String"/>
+	<field name="pesonetocorrugado" class="java.lang.String"/>
+	<field name="pesobrutocorrugado" class="java.lang.String"/>
+	<field name="volumencorrugado" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="100" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="100" uuid="64535293-2cdd-422f-96ee-bed0c1a8e5c4"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Codigo">
+					<subreportParameterExpression><![CDATA[$P{Codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMG_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMG_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "proterminado1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="107">
+			<printWhenExpression><![CDATA[$P{SI}=="1"]]></printWhenExpression>
+			<break>
+				<reportElement x="0" y="6" width="100" height="1" uuid="9a04f0c9-b424-47fc-957f-54c977401538"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="7" width="200" height="100" uuid="c587f5f5-a76c-41e8-b2e1-1353a625bdff"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Codigo">
+					<subreportParameterExpression><![CDATA[$P{Codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMG_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMG_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "proterminado_especificaciones.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

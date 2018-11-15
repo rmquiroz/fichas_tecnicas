@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proterminado_subreport2" language="groovy" pageWidth="612" pageHeight="792" columnWidth="592" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0" uuid="c56b8375-9d00-4de2-91cc-2ef8aeff32f9">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="823"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT producto.campolaboratoriouno as color, producto.campolaboratoriodos as aroma, producto.campolaboratoriotres as apariencia, producto.value as cod
+from m_product_bom as bom, m_product as prod,m_product as producto,c_uom as uom
+where bom.m_product_id=prod.m_product_id
+and bom.m_productbom_id=producto.m_product_id
+and prod.value LIKE  to_Char(CASE WHEN $P!{codigo}::NUMERIC>5000000 then $P!{codigo} WHEN $P!{codigo}::NUMERIC<5000000
+AND $P!{codigo}::NUMERIC>3999999 THEN $P!{codigo}::NUMERIC+1000000 WHEN $P!{codigo}::NUMERIC<3999999 THEN $P!{codigo}::NUMERIC+2000000 END)
+and producto.c_uom_id=uom.c_uom_id
+and producto.value like '6%'
+order by prod.value desc]]>
+	</queryString>
+	<field name="color" class="java.lang.String"/>
+	<field name="aroma" class="java.lang.String"/>
+	<field name="apariencia" class="java.lang.String"/>
+	<field name="cod" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="41">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="21" width="109" height="20" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="4a61b75f-94a2-4d7a-a755-4971f0180c93"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="110" y="21" width="130" height="20" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="6b0d0db8-b383-4c46-90d7-c71cdce1589d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COLOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="402" y="21" width="170" height="20" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="b7603012-4286-443e-bd42-69351734642b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APARIENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="21" width="160" height="20" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="ef8181fd-2814-4840-a8bc-3706a05d24e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AROMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="572" height="21" forecolor="#FFFFFF" backcolor="#00B0F0" uuid="bd4a1ccc-4df5-444e-aa8f-fa5ef6179a31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRANEL PARA LLENADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="110" y="21" width="1" height="20" uuid="f3b70f98-0cdb-40c6-8401-12975f19ce29"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="240" y="21" width="1" height="20" uuid="362bd0bc-497c-4715-934f-9fb25b1390f0"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="401" y="21" width="1" height="20" uuid="2841c1a7-b51d-412c-ad1c-168cdc36fa1d"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="572" height="41" uuid="899b1aab-507c-4e1d-a164-1e6623a9aeb2"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="21" width="572" height="1" uuid="b32496c2-2d38-4e65-bbf1-0bfb86f4e003"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="0" width="130" height="20" uuid="0edb0201-1b2c-4eb1-9892-cbe2894827cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{color}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="110" y="0" width="1" height="20" uuid="b3ba15f7-d498-4f08-990d-8991575cd07b"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="240" y="0" width="1" height="20" uuid="293eca2f-b59d-4137-ba19-c193d83ab166"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="401" y="0" width="1" height="20" uuid="07099e0f-edae-495d-ab82-fb8888d34172"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="20" uuid="20c5b699-419b-4eaf-9ab3-0657958054cd"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="572" y="0" width="1" height="20" uuid="3cdc0025-d7be-4c53-a048-bb82d082ea6f"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="1" y="0" width="109" height="20" uuid="4e038abd-9482-4a09-98d7-1d804747e139"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="241" y="0" width="160" height="20" uuid="e5442b2b-5721-4e8d-9553-338f13a17043"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{aroma}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="402" y="0" width="170" height="20" uuid="4987cd5b-edfe-4ff5-8dd7-3c1500cb0a64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{apariencia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="42" width="120" height="18" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="9d659933-95f0-4972-b5c8-2645cc864f23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRANSPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="24" width="120" height="18" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="15b8cb5d-28d3-4fd6-a9d0-4b5f04319587"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALMACENAJE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="5" width="572" height="18" forecolor="#FFFFFF" backcolor="#00B0F0" uuid="618e4553-b323-450d-bee0-0b650c6f5c7e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALMACENAJE, TRANSPORTE, LOTE Y CADUCIDAD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="60" width="572" height="1" uuid="6f7094f2-3ec7-4785-89df-645872d3edc1"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="122" y="24" width="448" height="18" forecolor="#000000" backcolor="#D9D9D9" uuid="b2167577-4ab2-4c42-b051-8e4af060bd72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ALMACÉN CERRADO A TEMPERATURA AMBIENTE, SECO Y FRESCO, PROTEGIDO CONTRA INTEMPERIE Y POLVO. LAS CAJAS DEBERÁN SER ESTIBADAS DE ACUERDO AL PATRÓN DE ESTIBADO, EVITANDO DEFORMACIONES Y ROTURAS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="122" y="42" width="448" height="18" forecolor="#000000" backcolor="#D9D9D9" uuid="58ac556c-b28f-421e-bdf0-5d14abd9ac5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[EN CAJA CERRADA, PROTEGIDO CONTRA LA INTEMPERIE, A TEMPERATURA AMBIENTE, EVITANDO CUALQUIER POSIBLE CONTAMINACIÓN Y CAMBIOS FÍSICOS QUE DAÑEN AL PRODUCTO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="122" y="61" width="448" height="18" forecolor="#000000" backcolor="#D9D9D9" uuid="0d3b5cf5-0ea6-497b-8f6e-13b47ca2ab30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[LOTE Y CADUCIDAD IMPRESOS EN EL ENVASE, CADUCIDAD 3 AÑOS A PARTIR DE LA FECHA DE FABRICACIÓN.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="61" width="120" height="18" forecolor="#00B0F0" backcolor="#D9D9D9" uuid="b57a90ae-7cc5-4717-bf9a-6940dd999b1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOTE Y CADUCIDAD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="121" y="24" width="1" height="56" uuid="e0451454-ca74-43b7-8737-2f7a75ea969b"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="23" width="572" height="1" uuid="4679bc01-0229-4704-980a-3a1327fa3a52"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="41" width="572" height="1" uuid="51182354-fbef-4e23-8141-befc18dee98e"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="573" height="1" uuid="676ac058-f5c7-4d33-9bd9-d4261a85182b"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement mode="Transparent" x="1" y="5" width="572" height="74" uuid="9e2c882c-8c16-4008-8dfd-549c0700e204"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</summary>
+</jasperReport>
