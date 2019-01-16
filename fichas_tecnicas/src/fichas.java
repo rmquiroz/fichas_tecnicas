@@ -21,9 +21,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+import org.apache.batik.ext.awt.image.rendered.TranslateRed;
 
-
+import com.google.api.GoogleAPI;
 import com.google.api.translate.*;
+import com.sun.java.accessibility.util.Translator;
+
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperReport;
@@ -66,6 +69,7 @@ public class fichas extends HttpServlet {
 	    response.setContentType("application/pdf");	    
 	   
 	    try {
+	    	TranslateV2.setHttpReferrer("http://ajax.googleapis.com/ajax/services/language/translate");
 	    	ResultSet rs=null;
 	    	String fichas=request.getParameter("Codigo");
 	    	Class.forName("org.postgresql.Driver");
@@ -124,18 +128,18 @@ public class fichas extends HttpServlet {
 				  ingredientes=rs.getString(11);
 			  }
 			  //TRADUCIMOS Y/O CONVERTIMOS
-			  
-			  descripcion=Translate.translate(descripcion,Language.SPANISH,Language.ENGLISH);
+			  GoogleAPI.setKey("AIzaSyC8sphF53JNnkBYMAlImf3pTBW9CfSDePQ");
+			  descripcion=Translate.DEFAULT.execute(descripcion,Language.SPANISH,Language.ENGLISH);
 			  ml=""+(Double.parseDouble(ml)/ 29.574);
-			  empaqueprimario=Translate.translate(empaqueprimario,Language.SPANISH,Language.ENGLISH);
-			  marca=Translate.translate(marca,Language.SPANISH,Language.ENGLISH);
-			  uso=Translate.translate(uso,Language.SPANISH,Language.ENGLISH);
-			  aroma=Translate.translate(aroma,Language.SPANISH,Language.ENGLISH);
+			  empaqueprimario=Translate.DEFAULT.execute(empaqueprimario,Language.SPANISH,Language.ENGLISH);
+			  marca=Translate.DEFAULT.execute(marca,Language.SPANISH,Language.ENGLISH);
+			  uso=Translate.DEFAULT.execute(uso,Language.SPANISH,Language.ENGLISH);
+			  aroma=Translate.DEFAULT.execute(aroma,Language.SPANISH,Language.ENGLISH);
 			  codigo=codigo;
 			  gtin13=gtin13;
-			  instrucciones=Translate.translate(instrucciones,Language.SPANISH,Language.ENGLISH);
-			  advertencias=Translate.translate(advertencias,Language.SPANISH,Language.ENGLISH);
-			  ingredientes=Translate.translate(ingredientes,Language.SPANISH,Language.ENGLISH);
+			  instrucciones=Translate.DEFAULT.execute(instrucciones,Language.SPANISH,Language.ENGLISH);
+			  advertencias=Translate.DEFAULT.execute(advertencias,Language.SPANISH,Language.ENGLISH);
+			  ingredientes=Translate.DEFAULT.execute(ingredientes,Language.SPANISH,Language.ENGLISH);
 				
 		    JasperReport jasperReport = null;
             Map parameterMap = new HashMap();

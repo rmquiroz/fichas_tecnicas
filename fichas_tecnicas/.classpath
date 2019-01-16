@@ -13,40 +13,36 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/activation-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/barbecue-1.5-beta1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/barcode4j-2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/batik-all-1.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/batik-bridge.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/commons-beanutils-1.8.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/commons-collections-2.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/commons-digester-2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/commons-javaflow-20060411.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/groovy-all-2.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/iText-2.1.7.js2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/jasperreports-5.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/jasperreports-chart-themes-4.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/jasperreports-extensions-3.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/jasperreports-fonts-5.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/jasperreports-javaflow-5.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/javax.annotation.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/javax.mail-1.5.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/javax.mail-api-1.4.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/javax.servlet-2.5.0.v201103041518.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/javax.servlet-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/jxl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/org.w3c.css.sac-1.3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/org-netbeans-core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/png-encoder-1.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/poi-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/postgresql-8.4-703.jdbc3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/spring-beans-2.5.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/spring-core-2.5.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/w3c.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/json-simple-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/microsoft-translator-java-api-0.6.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/google-api-translate-java-0.28.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/barcode4j-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/batik-all-1.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/batik-bridge.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.8.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-javaflow-20060411.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/groovy-all-2.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/iText-2.1.7.js2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-5.6.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-chart-themes-5.6.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-extensions-3.5.3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-fonts-5.6.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-javaflow-5.6.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.annotation.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.servlet-2.5.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.servlet-3.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jxl-2.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org-netbeans-core_ireport.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.w3c.css.sac-1.3.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/png-encoder-1.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-3.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/postgresql-9.1-902.jdbc4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-beans-2.5.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-core-2.5.5.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/w3c.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-api-translate-java-0.97.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
