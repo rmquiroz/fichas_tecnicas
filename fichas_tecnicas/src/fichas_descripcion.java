@@ -63,6 +63,7 @@ public class fichas_descripcion extends HttpServlet {
 
 	private void createReport(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		// TODO Auto-generated method stub
 		SimpleDateFormat anioActual = new SimpleDateFormat("yyyy");
 		SimpleDateFormat fechaActuaL = new SimpleDateFormat(

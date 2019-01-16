@@ -10,29 +10,28 @@
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>fichas</servlet-name>
-  	<servlet-class>fichas</servlet-class>
+    <servlet-name>fichas</servlet-name>
+    <servlet-class>fichas</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>fichas</servlet-name>
-  	<url-pattern>/fichas</url-pattern>
+    <servlet-name>fichas</servlet-name>
+    <url-pattern>/fichas</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>fichas_upc</servlet-name>
-  	<servlet-class>fichas_upc</servlet-class>
+    <servlet-name>fichas_upc</servlet-name>
+    <servlet-class>fichas_upc</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>fichas_upc</servlet-name>
-  	<url-pattern>/fichas_upc</url-pattern>
+    <servlet-name>fichas_upc</servlet-name>
+    <url-pattern>/fichas_upc</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>fichas_descripcion</servlet-name>
-  	<servlet-class>fichas_descripcion</servlet-class>
+    <servlet-name>fichas_descripcion</servlet-name>
+    <servlet-class>fichas_descripcion</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>fichas_descripcion</servlet-name>
-  	<url-pattern>/fichas_descripcion</url-pattern>
+    <servlet-name>fichas_descripcion</servlet-name>
+    <url-pattern>/fichas_descripcion</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>Auto</servlet-name>

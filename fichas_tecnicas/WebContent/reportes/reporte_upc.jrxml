@@ -53,5 +53,43 @@
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "proterminado_especificaciones.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
+		<band height="107">
+			<subreport>
+				<reportElement x="0" y="7" width="200" height="100" uuid="5fe0e6db-49e9-49d6-8e59-bec86b504f7e"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Codigo">
+					<subreportParameterExpression><![CDATA[$F{codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMG_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMG_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ficha_exportacionSP.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="0" width="100" height="1" uuid="468d70dc-4df0-4e75-b131-836d8d09eec1"/>
+			</break>
+		</band>
+		<band height="107">
+			<subreport>
+				<reportElement x="0" y="7" width="200" height="100" uuid="8dd611c8-a1df-45b3-b468-cd5199e4447e"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Codigo">
+					<subreportParameterExpression><![CDATA[$F{codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMG_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMG_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ficha_exportacionEN.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="0" width="100" height="1" uuid="940f6096-c6d4-4542-b740-d3301494b7d4"/>
+			</break>
+		</band>
 	</detail>
 </jasperReport>

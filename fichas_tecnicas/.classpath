@@ -45,5 +45,8 @@
 	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/spring-beans-2.5.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/spring-core-2.5.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/w3c.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/microsoft-translator-java-api-0.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rodolfo Quiroz/Documents/lib/google-api-translate-java-0.28.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

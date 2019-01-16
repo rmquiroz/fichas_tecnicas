@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="730a537f-db9a-42fc-a560-b61c4abb6b8a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="99"/>
 	<parameter name="Codigo" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -11,6 +11,39 @@
 	</parameter>
 	<parameter name="IMG_DIR" class="java.lang.String"/>
 	<parameter name="SI" class="java.lang.String"/>
+	<parameter name="descripcion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ml" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="marca" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="aroma" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="codigo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="gtin13" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ingredientes" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="empaqueprimario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="uso" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="instrucciones" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="advertencias" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select * from
 
@@ -90,7 +123,7 @@ and cod3.codigo = cod4.codigo]]>
 	<detail>
 		<band height="100" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="0" width="200" height="100" uuid="64535293-2cdd-422f-96ee-bed0c1a8e5c4"/>
+				<reportElement uuid="64535293-2cdd-422f-96ee-bed0c1a8e5c4" x="0" y="0" width="200" height="100"/>
 				<subreportParameter name="SUBREPORT_DIR">
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -107,10 +140,10 @@ and cod3.codigo = cod4.codigo]]>
 		<band height="107">
 			<printWhenExpression><![CDATA[$P{SI}=="1"]]></printWhenExpression>
 			<break>
-				<reportElement x="0" y="6" width="100" height="1" uuid="9a04f0c9-b424-47fc-957f-54c977401538"/>
+				<reportElement uuid="9a04f0c9-b424-47fc-957f-54c977401538" x="0" y="6" width="100" height="1"/>
 			</break>
 			<subreport>
-				<reportElement x="0" y="7" width="200" height="100" uuid="c587f5f5-a76c-41e8-b2e1-1353a625bdff"/>
+				<reportElement uuid="c587f5f5-a76c-41e8-b2e1-1353a625bdff" x="0" y="7" width="200" height="100"/>
 				<subreportParameter name="SUBREPORT_DIR">
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -122,6 +155,68 @@ and cod3.codigo = cod4.codigo]]>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "proterminado_especificaciones.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="107">
+			<subreport>
+				<reportElement uuid="26616120-307d-4fa1-b1f4-827eb68d7d0b" x="0" y="7" width="200" height="100"/>
+				<subreportParameter name="codigo">
+					<subreportParameterExpression><![CDATA[$P{codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMG_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMG_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ficha_exportacionSP.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="40d0e8e9-8343-475d-9f81-815c9c82fc12" x="0" y="0" width="100" height="1"/>
+			</break>
+		</band>
+		<band height="107">
+			<break>
+				<reportElement uuid="c4b32cb3-6d87-434c-9fb5-9781773b8813" x="0" y="0" width="100" height="1"/>
+			</break>
+			<subreport>
+				<reportElement uuid="7fd68857-9eaa-4146-a6a5-3159f452f603" x="0" y="7" width="200" height="100"/>
+				<subreportParameter name="codigo">
+					<subreportParameterExpression><![CDATA[$P{Codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="gtin13">
+					<subreportParameterExpression><![CDATA[$P{gtin13}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aroma">
+					<subreportParameterExpression><![CDATA[$P{aroma}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="instrucciones">
+					<subreportParameterExpression><![CDATA[$P{instrucciones}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ingredientes">
+					<subreportParameterExpression><![CDATA[$P{ingredientes}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="descripcion">
+					<subreportParameterExpression><![CDATA[$P{descripcion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="advertencias">
+					<subreportParameterExpression><![CDATA[$P{advertencias}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="empaqueprimario">
+					<subreportParameterExpression><![CDATA[$P{empaqueprimario}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="marca">
+					<subreportParameterExpression><![CDATA[$P{marca}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMG_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMG_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ml">
+					<subreportParameterExpression><![CDATA[$P{ml}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="uso">
+					<subreportParameterExpression><![CDATA[$P{uso}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ficha_exportacionEN.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
