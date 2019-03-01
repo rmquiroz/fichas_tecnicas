@@ -44,5 +44,10 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/w3c.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-api-translate-java-0.97.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-translate-api-v2-java-cli-0.52.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-translate-api-v2-java-core-0.52.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-api-services-translate-v2-rev51-1.25.0-javadoc.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-api-services-translate-v2-rev51-1.25.0-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/google-api-services-translate-v2-rev51-1.25.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

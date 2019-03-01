@@ -162,8 +162,14 @@
 							<input class="span3" name="reportID" type="hidden" value="1"
 								required> <span class="help-inline">OB3:</span><input
 								class="span3" name="Codigo" type="text" placeholder="FOLIO"
-								required> <input type="checkbox" name="SI" value="1">
-
+								required>
+								INSTRUCCIONES DE EMBALAJE 
+								<input type="checkbox" name="SI" value="1"><BR>
+								
+								FACT SHEET 
+								<input type="checkbox" name="FS" value="1">
+								<BR>
+								
 							<button type="submit" class="btn btn-primary">Aceptar</button>
 							<!-- <button type="reset" class="btn">Limpiar</button>  -->
 						</div>

@@ -16,17 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
-
-import org.apache.batik.ext.awt.image.rendered.TranslateRed;
-
 import com.google.api.GoogleAPI;
-import com.google.api.translate.*;
-import com.sun.java.accessibility.util.Translator;
+import com.google.api.translate.Language;
+import com.google.api.translate.Translate;
+import com.google.api.translate.TranslateV2;
 
+
+
+//import com.google.api.translate.*;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperReport;
@@ -77,7 +74,7 @@ public class fichas extends HttpServlet {
 			String url = "jdbc:postgresql://10.1.250.20:5932/openbravo";
 			Connection cn = DriverManager.getConnection(url, "postgres", "s3st2m1s4e");
 
-	    	PreparedStatement ps= cn.prepareStatement("SELECT prodc.description AS descripcion,"
+	    	PreparedStatement ps= cn.prepareStatement("SELECT prodt.description AS descripcion,"
 + "prodc.mililitros AS ML,"
 + "prodc.campolaboratoriosiete AS EMPAQUEPRIMARIO,"
 + "prodc.marca AS marca,"
@@ -129,7 +126,11 @@ public class fichas extends HttpServlet {
 			  }
 			  //TRADUCIMOS Y/O CONVERTIMOS
 			  GoogleAPI.setKey("AIzaSyC8sphF53JNnkBYMAlImf3pTBW9CfSDePQ");
-			  descripcion=Translate.DEFAULT.execute(descripcion,Language.SPANISH,Language.ENGLISH);
+            //GoogleAPI.setKey("c4f7924c4e66c48ffaa8e8249eb87b1cb4c359f7");
+			  System.out.println("ell"+descripcion);
+			  
+			/*  descripcion=TranslateV2.DEFAULT.execute(descripcion,Language.SPANISH,Language.ENGLISH);
+			  System.out.println(""+descripcion);
 			  ml=""+(Double.parseDouble(ml)/ 29.574);
 			  empaqueprimario=Translate.DEFAULT.execute(empaqueprimario,Language.SPANISH,Language.ENGLISH);
 			  marca=Translate.DEFAULT.execute(marca,Language.SPANISH,Language.ENGLISH);
@@ -139,62 +140,54 @@ public class fichas extends HttpServlet {
 			  gtin13=gtin13;
 			  instrucciones=Translate.DEFAULT.execute(instrucciones,Language.SPANISH,Language.ENGLISH);
 			  advertencias=Translate.DEFAULT.execute(advertencias,Language.SPANISH,Language.ENGLISH);
-			  ingredientes=Translate.DEFAULT.execute(ingredientes,Language.SPANISH,Language.ENGLISH);
-				
-		    JasperReport jasperReport = null;
-            Map parameterMap = new HashMap();
-  	           Map parametros = request.getParameterMap();
-  	          System.out.println("PARAMETROS .... ");
-  	           for (Iterator iterator = parametros.keySet().iterator(); iterator.hasNext();) {
-  	            Object key_ = iterator.next();
-  	              String key = (String)key_;
-  	             String valor = request.getParameter(key);
-             System.out.println((new StringBuilder(String.valueOf(key))).append(" ::> ").append(valor).toString());
-            if (!key.equals("reportID")) {
-  	                  parameterMap.put(key, Integer.parseInt(valor));
-  	                        }
-  	                    }
-  	         parameterMap.put("IMG_DIR",IMG_DIR);
-  	       parameterMap.put("img_dir",img_dir);
-  	     parameterMap.put("descripcion",descripcion);
-		  parameterMap.put("ml",ml);
-		  parameterMap.put("empaqueprimario",empaqueprimario);
-		  parameterMap.put("marca",marca);
-		  parameterMap.put("uso",uso);
-		  parameterMap.put("aroma",aroma);
-		  parameterMap.put("codigo",codigo);
-		  parameterMap.put("gtin13",gtin13);
-		  parameterMap.put("instrucciones",instrucciones);
-		  parameterMap.put("advertencias",advertencias);
-		  parameterMap.put("ingredientes",ingredientes);
+			  ingredientes=Translate.DEFAULT.execute(ingredientes,Language.SPANISH,Language.ENGLISH);	*/			
+			  JasperReport jasperReport = null;
+			  Map parameterMap = new HashMap();
+			  Map parametros = request.getParameterMap();
+			  System.out.println("PARAMETROS .... ");
+			  for (Iterator iterator = parametros.keySet().iterator(); iterator.hasNext();) {
+				  Object key_ = iterator.next();
+				  String key = (String)key_;
+				  String valor = request.getParameter(key);
+				  System.out.println((new StringBuilder(String.valueOf(key))).append(" ::> ").append(valor).toString());
+				  if (!key.equals("reportID")) {
+					  parameterMap.put(key, Integer.parseInt(valor));
+				  }
+			  }  	           
+			  parameterMap.put("IMG_DIR",IMG_DIR);
+			  parameterMap.put("img_dir",img_dir);
+			  parameterMap.put("descripcion",descripcion);
+			  parameterMap.put("ml",ml);
+			  parameterMap.put("empaqueprimario",empaqueprimario);
+			  parameterMap.put("marca",marca);
+			  parameterMap.put("uso",uso);
+			  parameterMap.put("aroma",aroma);			 
+			  parameterMap.put("gtin13",gtin13);
+			  parameterMap.put("instrucciones",instrucciones);
+			  parameterMap.put("advertencias",advertencias);
+			  parameterMap.put("ingredientes",ingredientes);
   	         //parameterMap.put("IMG_DIR", (new StringBuilder(String.valueOf(request.getSession().getServletContext().getRealPath(IMG_DIR)))).append("/").toString());
  	         //parameterMap.put("img_dir", (new StringBuilder(String.valueOf(request.getSession().getServletContext().getRealPath(img_dir)))).append("/").toString());
- 	           parameterMap.put("SUBREPORT_DIR", request.getSession().getServletContext().getRealPath("/")+PATH_REPORT);
- 	           System.out.println((new StringBuilder("GENERANDO EL REPORTE  ")).append((String)reportes.get(request.getParameter("reportID"))).toString());
- 	            String reporteJasper = request.getSession().getServletContext().getRealPath((new StringBuilder(String.valueOf(PATH_REPORT))).append((String)reportes.get(request.getParameter("reportID"))).append(".jasper").toString());
- 	        jasperReport = (JasperReport)JRLoader.loadObject(new FileInputStream(reporteJasper));
- 	           net.sf.jasperreports.engine.JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameterMap, cn);
- 	            java.io.OutputStream oS = null;
+			  parameterMap.put("SUBREPORT_DIR", request.getSession().getServletContext().getRealPath("/")+PATH_REPORT);
+			  System.out.println((new StringBuilder("GENERANDO EL REPORTE  ")).append((String)reportes.get(request.getParameter("reportID"))).toString());
+			  String reporteJasper = request.getSession().getServletContext().getRealPath((new StringBuilder(String.valueOf(PATH_REPORT))).append((String)reportes.get(request.getParameter("reportID"))).append(".jasper").toString());
+			  jasperReport = (JasperReport)JRLoader.loadObject(new FileInputStream(reporteJasper));
+			  net.sf.jasperreports.engine.JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameterMap, cn);
+			  java.io.OutputStream oS = null;
  	          oS = response.getOutputStream();
- 	         JasperExportManager.exportReportToPdfStream(jasperPrint, oS);
- 	         
- 	         
- 	         
- 	     
-  	          cn.close();
-  	           
+ 	          JasperExportManager.exportReportToPdfStream(jasperPrint, oS); 	          	         	          	     
+  	          cn.close();  	           
 	    } catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-		} catch (Exception ex) {
+	    	e.printStackTrace();
+	    } catch (Exception ex) {
 			// TODO: handle exception
-			   ex.printStackTrace();
-		}	    
-	}
-		
-    static  {
-	       PATH_REPORT = "/reportes/";
-	       IMG_DIR = "http://10.1.250.24/imagenes_fichas/";//(new StringBuilder(String.valueOf(PATH_REPORT))).append("img/").toString();
-	       img_dir = "http://10.1.250.24/imagenes_fichas/";//(new StringBuilder(String.valueOf(PATH_REPORT))).append("img/").toString();
-           }	
+	    	ex.printStackTrace();
+	    }	    
+	}		
+	static  {
+		PATH_REPORT = "reportes/";
+		IMG_DIR = "http://10.1.250.24/imagenes_fichas/";//(new StringBuilder(String.valueOf(PATH_REPORT))).append("img/").toString();
+		img_dir = "http://10.1.250.24/imagenes_fichas/";//(new StringBuilder(String.valueOf(PATH_REPORT))).append("img/").toString();
+	}	
 }
