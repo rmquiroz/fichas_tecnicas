@@ -125,7 +125,7 @@ and cod3.codigo = cod4.codigo]]>
 	<detail>
 		<band height="100" splitType="Stretch">
 			<subreport>
-				<reportElement uuid="64535293-2cdd-422f-96ee-bed0c1a8e5c4" x="0" y="0" width="200" height="100"/>
+				<reportElement x="0" y="0" width="200" height="100" uuid="64535293-2cdd-422f-96ee-bed0c1a8e5c4"/>
 				<subreportParameter name="SUBREPORT_DIR">
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -142,10 +142,12 @@ and cod3.codigo = cod4.codigo]]>
 		<band height="107">
 			<printWhenExpression><![CDATA[$P{SI}==1]]></printWhenExpression>
 			<break>
-				<reportElement uuid="9a04f0c9-b424-47fc-957f-54c977401538" x="0" y="6" width="100" height="1"/>
+				<reportElement x="0" y="6" width="100" height="1" uuid="9a04f0c9-b424-47fc-957f-54c977401538"/>
 			</break>
 			<subreport>
-				<reportElement uuid="c587f5f5-a76c-41e8-b2e1-1353a625bdff" x="0" y="7" width="200" height="100"/>
+				<reportElement x="0" y="7" width="200" height="100" uuid="c587f5f5-a76c-41e8-b2e1-1353a625bdff">
+					<printWhenExpression><![CDATA[$P{SI}==1]]></printWhenExpression>
+				</reportElement>
 				<subreportParameter name="SUBREPORT_DIR">
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -162,7 +164,9 @@ and cod3.codigo = cod4.codigo]]>
 		<band height="107">
 			<printWhenExpression><![CDATA[$P{FS}==1]]></printWhenExpression>
 			<subreport>
-				<reportElement uuid="26616120-307d-4fa1-b1f4-827eb68d7d0b" x="0" y="7" width="200" height="100"/>
+				<reportElement x="0" y="7" width="200" height="100" uuid="26616120-307d-4fa1-b1f4-827eb68d7d0b">
+					<printWhenExpression><![CDATA[$P{FS}==1]]></printWhenExpression>
+				</reportElement>
 				<subreportParameter name="codigo">
 					<subreportParameterExpression><![CDATA[$P{Codigo}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -173,7 +177,7 @@ and cod3.codigo = cod4.codigo]]>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ficha_exportacionSP.jasper"]]></subreportExpression>
 			</subreport>
 			<break>
-				<reportElement uuid="40d0e8e9-8343-475d-9f81-815c9c82fc12" x="0" y="0" width="100" height="1"/>
+				<reportElement x="0" y="0" width="100" height="1" uuid="40d0e8e9-8343-475d-9f81-815c9c82fc12"/>
 			</break>
 		</band>
 	</detail>
